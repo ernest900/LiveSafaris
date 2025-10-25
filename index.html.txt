@@ -1,0 +1,156 @@
+!DOCTYPE html
+html lang=en
+head
+meta charset=UTF-8
+meta name=viewport content=width=device-width, initial-scale=1.0
+titleLive Safari — Travel Without Movingtitle
+style
+@import url('httpsfonts.googleapis.comcss2family=Poppinswght@300;400;600;700&display=swap');
+{margin0;padding0;box-sizingborder-box;}
+html,body{height100%;font-family'Poppins',sans-serif;background#071026;color#fff;overflow-xhidden;}
+.page{min-height100vh;displayflex;align-itemscenter;justify-contentcenter;padding20px;}
+.card{width100%;max-width1200px;border-radius18px;overflowhidden;positionrelative;box-shadow0 30px 80px rgba(2,6,23,0.7);}
+.media{positionrelative;height500px;background#000;}
+video#bgvideo{positionabsolute;inset0;width100%;height100%;object-fitcover;z-index-2;}
+.slideshow{positionabsolute;inset0;displayflex;}
+.slide{min-width100%;background-sizecover;background-positioncenter;filterbrightness(.55);transitionopacity .9s;opacity0;}
+.overlay{positionabsolute;inset0;backgroundlinear-gradient(180deg, rgba(7,18,38,0.25), rgba(7,18,38,0.6));z-index-1;}
+.hero{displaygrid;grid-template-columns1fr 450px;gap28px;positionrelative;padding36px;}
+@media(max-width980px){.hero{grid-template-columns1fr;}.media{height360px;}}
+@media(max-width600px){.hero{grid-template-columns1fr;} .hero .left{padding-bottom20px;}}
+.left h1{font-size32px;line-height1.1;margin-bottom12px;}
+.lead{color#c7d2e0;font-size15px;margin-bottom18px;}
+.hook{font-weight700;color#ffcc66;backgroundlinear-gradient(90deg,#ffcc66 0%, #ffd88a 100%);-webkit-background-cliptext;background-cliptext;colortransparent;}
+.cta{displayflex;gap12px;flex-wrapwrap;margin-bottom8px;}
+.btn-primary{background#ffb703;color#071226;padding14px 20px;border-radius12px;border0;font-weight700;cursorpointer;box-shadow0 14px 30px rgba(255,183,3,0.14);}
+.btn-ghost{backgroundtransparent;border1px solid rgba(255,255,255,0.06);color#cbd5e1;padding12px 14px;border-radius10px;cursorpointer;text-decorationnone;text-aligncenter;}
+.panel{backgroundrgba(255,255,255,0.03);border-radius12px;padding18px;color#e6eef8;margin-top20px;}
+.panel h3{margin-bottom8px;}
+.small{font-size13px;color#9aa6b2;}
+form.booking{margin-top12px;displayflex;flex-directioncolumn;gap10px;}
+input,select,textarea{padding10px;border-radius8px;border1px solid rgba(255,255,255,0.06);backgroundrgba(255,255,255,0.02);colorinherit;}
+label{font-size13px;color#c7d2e0;}
+.submit{background#fff;color#071226;padding12px;border-radius10px;border0;font-weight700;cursorpointer;}
+.note{font-size13px;color#9aa6b2;margin-top8px;}
+.fade-up{opacity0;transformtranslateY(18px);animationfadeUp .8s forwards;}
+.fade-up.delay-1{animation-delay.12s;}
+.fade-up.delay-2{animation-delay.24s;}
+@keyframes fadeUp{to{opacity1;transformnone}}
+footer{padding16px;text-aligncenter;color#9aa6b2;font-size13px;}
+.language-switch{positionabsolute;top20px;right20px;z-index10;}
+.language-switch button{margin-left8px;padding6px 12px;border-radius8px;bordernone;backgroundrgba(255,255,255,0.1);color#fff;cursorpointer;font-weight600;}
+style
+head
+body
+div class=language-switch
+button onclick=setLanguage('en')Englishbutton
+button onclick=setLanguage('jp')日本語button
+div
+div class=page
+  div class=card
+    div class=media aria-hidden=true
+      video id=bgvideo autoplay muted loop playsinline
+        source src=httpsplayer.vimeo.comexternal449812336.sd.mp4s=... type=videomp4
+      video
+      div class=slideshow id=slideshow
+        div class=slide style=background-imageurl('httpsimages.unsplash.comphoto-1526778548025-fa2f459cd5c1auto=format&fit=crop&w=1600&q=80')div
+        div class=slide style=background-imageurl('httpsimages.unsplash.comphoto-1508178571622-2b2ec1adc3d0auto=format&fit=crop&w=1600&q=80')div
+        div class=slide style=background-imageurl('httpsimages.unsplash.comphoto-1483729558449-99ef09a8c325auto=format&fit=crop&w=1600&q=80')div
+      div
+      div class=overlaydiv
+    div
+
+    div class=hero
+      div class=left
+        div class=fade-up delay-1 id=heroText
+          div class=smallLive Safaridiv
+          h1Join a span class=hookMaasai-Dressed Guidespan and Explore Africa one on one Live through Zoom!h1
+          p class=leadExperience the thrill of a live, interactive adventure! Talk to locals, children, and community members as you walk through vibrant markets and visit coffee farms. Immerse yourself in the warmth of African culture, ask questions, and engage in real-time interactions. Don’t miss this unique opportunity to connect with Africa from the comfort of your home. Join us and be part of a community of explorers—your adventure awaits!p
+        div
+
+        div class=cta fade-up delay-2
+          button class=btn-primary id=openFormRegister — $15hrbutton
+          a class=btn-ghost href=httpswa.me255745780988 target=_blankChat on WhatsAppa
+        div
+      div
+
+      aside class=panel fade-up
+        h3 id=formTitleBook your Live Safarih3
+        div class=small id=formDescPick your preferred date and time (your local time). We'll confirm and send a Zoom link.div
+        form id=booking class=booking autocomplete=on action=httpsformspree.iofmrbozdyb method=POST
+          label id=labelNameYour nameinput type=text name=name placeholder=Full name requiredlabel
+          label id=labelEmailEmailinput type=email name=email placeholder=you@example.com requiredlabel
+          label id=labelCountryCountryinput type=text name=country placeholder=Country you are in requiredlabel
+          label id=labelDatePreferred date & timeinput type=datetime-local name=datetime requiredlabel
+          label id=labelNoteAnything you want to seeinput type=text name=note placeholder=e.g. Maasai village, market, coffee farmlabel
+          button type=submit class=submit id=submitBtnReserve — We'll email Zoom linkbutton
+        form
+      aside
+    div
+
+    footer
+      Live Safari — Experience Africa live • $15hr • All sessions interactive & real
+    footer
+  div
+div
+
+script
+const slides = document.querySelectorAll('.slide'); let idx=0;
+function showNext(){ slides.forEach((s,i)=s.style.opacity=(i===idx10)); idx=(idx+1)%slides.length; }
+showNext(); setInterval(showNext,4500);
+
+document.getElementById('openForm').addEventListener('click',()=document.querySelector('input[name=datetime]').focus());
+
+ Form submit to Formspree
+document.getElementById('booking').addEventListener('submit', function(e){
+  e.preventDefault();
+  const form = e.target;
+  fetch(form.action, {method'POST', bodynew FormData(form), headers{'Accept''applicationjson'}})
+  .then(r={if(r.ok){alert('Thanks! We received your request. We will email a Zoom link.'); form.reset();} else{alert('Oops! There was a problem.')}})
+  .catch(()=alert('Oops! There was a problem.'));
+});
+
+ Language toggle
+const texts = {
+  jp{
+    heroTitle'マサイのガイドと一対一でズームを通してアフリカを体験！',
+    heroLead'ライブでインタラクティブな冒険を体験！地元の人々や子供たちと話しながら、活気ある市場やコーヒー農園を歩き、アフリカの温かい文化に触れましょう。質問してリアルタイムで交流してください。家にいながらアフリカとつながるこのユニークな機会をお見逃しなく！',
+    formTitle'ライブサファリを予約',
+    formDesc'希望の日付と時間を選択してください。Zoomリンクを送ります。',
+    labelName'お名前',
+    labelEmail'メール',
+    labelCountry'国',
+    labelDate'希望日と時間',
+    labelNote'見たいものは何ですか？',
+    submitBtn'予約 — Zoomリンクを送ります'
+  },
+  en{
+    heroTitle'Join a Maasai-Dressed Guide and Explore Africa one on one Live through Zoom!',
+    heroLead'Experience the thrill of a live, interactive adventure! Talk to locals, children, and community members as you walk through vibrant markets and visit coffee farms. Immerse yourself in the warmth of African culture, ask questions, and engage in real-time interactions. Don’t miss this unique opportunity to connect with Africa from the comfort of your home. Join us and be part of a community of explorers—your adventure awaits!',
+    formTitle'Book your Live Safari',
+    formDescPick your preferred date and time (your local time). We'll confirm and send a Zoom link.,
+    labelName'Your name',
+    labelEmail'Email',
+    labelCountry'Country',
+    labelDate'Preferred date & time',
+    labelNote'Anything you want to see',
+    submitBtnReserve — We'll email Zoom link
+  }
+}
+
+function setLanguage(lang){
+  const t = texts[lang];
+  document.querySelector('#heroText h1').innerText=t.heroTitle;
+  document.querySelector('#heroText p').innerText=t.heroLead;
+  document.getElementById('formTitle').innerText=t.formTitle;
+  document.getElementById('formDesc').innerText=t.formDesc;
+  document.getElementById('labelName').childNodes[0].nodeValue=t.labelName;
+  document.getElementById('labelEmail').childNodes[0].nodeValue=t.labelEmail;
+  document.getElementById('labelCountry').childNodes[0].nodeValue=t.labelCountry;
+  document.getElementById('labelDate').childNodes[0].nodeValue=t.labelDate;
+  document.getElementById('labelNote').childNodes[0].nodeValue=t.labelNote;
+  document.getElementById('submitBtn').innerText=t.submitBtn;
+}
+script
+body
+html
