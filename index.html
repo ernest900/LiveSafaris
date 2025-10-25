@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Safari — Travel Without Moving</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;font-family:'Poppins',sans-serif;background:#071026;color:#fff;overflow-x:hidden;}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.card{width:100%;max-width:1200px;border-radius:18px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(2,6,23,0.7);}
+.media{position:relative;height:500px;background:#000;}
+video#bgvideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+.slideshow{position:absolute;inset:0;display:flex;}
+.slide{min-width:100%;background-size:cover;background-position:center;filter:brightness(.55);transition:opacity .9s;opacity:0;}
+.overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,18,38,0.25), rgba(7,18,38,0.6));z-index:-1;}
+.hero{display:grid;grid-template-columns:1fr 450px;gap:28px;position:relative;padding:36px;}
+@media(max-width:980px){.hero{grid-template-columns:1fr;}.media{height:360px;}}
+@media(max-width:600px){.hero{grid-template-columns:1fr;} .hero .left{padding-bottom:20px;}}
+.left h1{font-size:32px;line-height:1.1;margin-bottom:12px;}
+.lead{color:#c7d2e0;font-size:15px;margin-bottom:18px;}
+.hook{font-weight:700;color:#ffcc66;background:linear-gradient(90deg,#ffcc66 0%, #ffd88a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;}
+.btn-primary{background:#ffb703;color:#071226;padding:14px 20px;border-radius:12px;border:0;font-weight:700;cursor:pointer;box-shadow:0 14px 30px rgba(255,183,3,0.14);}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cbd5e1;padding:12px 14px;border-radius:10px;cursor:pointer;text-decoration:none;text-align:center;}
+.panel{background:rgba(255,255,255,0.03);border-radius:12px;padding:18px;color:#e6eef8;margin-top:20px;}
+.panel h3{margin-bottom:8px;}
+.small{font-size:13px;color:#9aa6b2;}
+form.booking{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
+input,select,textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:inherit;}
+label{font-size:13px;color:#c7d2e0;}
+.submit{background:#fff;color:#071226;padding:12px;border-radius:10px;border:0;font-weight:700;cursor:pointer;}
+.note{font-size:13px;color:#9aa6b2;margin-top:8px;}
+.fade-up{opacity:0;transform:translateY(18px);animation:fadeUp .8s forwards;}
+.fade-up.delay-1{animation-delay:.12s;}
+.fade-up.delay-2{animation-delay:.24s;}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+footer{padding:16px;text-align:center;color:#9aa6b2;font-size:13px;}
+.language-switch{position:absolute;top:20px;right:20px;z-index:10;}
+.language-switch button{margin-left:8px;padding:6px 12px;border-radius:8px;border:none;background:rgba(255,255,255,0.1);color:#fff;cursor:pointer;font-weight:600;}
+</style>
+</head>
+<body>
+
+<div class="language-switch">
+<button onclick="setLanguage('en')">English</button>
+<button onclick="setLanguage('jp')">日本語</button>
+</div>
+
+<div class="page">
+  <div class="card">
+
+    <div class="media" aria-hidden="true">
+      <video id="bgvideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1600&q=80">
+        <!-- Replace with valid video URL if needed -->
+      </video>
+      <div class="slideshow" id="slideshow">
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1508178571622-2b2ec1adc3d0?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1600&q=80')"></div>
+      </div>
+      <div class="overlay"></div>
+    </div>
+
+    <div class="hero">
+      <div class="left">
+        <div class="fade-up delay-1" id="heroText">
+          <div class="small">Live Safari</div>
+          <h1>Join a <span class="hook">Maasai-Dressed Guide</span> and Explore Africa one on one Live through Zoom!</h1>
+          <p class="lead">Experience the thrill of a live, interactive adventure! Talk to locals, children, and community members as you walk through vibrant markets and visit coffee farms. Immerse yourself in the warmth of African culture, ask questions, and engage in real-time interactions. Don’t miss this unique opportunity to connect with Africa from the comfort of your home. Join us and be part of a community of explorers—your adventure awaits!</p>
+        </div>
+
+        <div class="cta fade-up delay-2">
+          <button class="btn-primary" id="openForm">Register — $15/hr</button>
+          <a class="btn-ghost" href="https://wa.me/255745780988" target="_blank">Chat on WhatsApp</a>
+        </div>
+      </div>
+
+      <aside class="panel fade-up">
+        <h3 id="formTitle">Book your Live Safari</h3>
+        <div class="small" id="formDesc">Pick your preferred date and time (your local time). We'll confirm and send a Zoom link.</div>
+        <form id="booking" class="booking" autocomplete="on" action="https://formspree.io/f/mrbozdyb" method="POST">
+          <label id="labelName">Your name<input type="text" name="name" placeholder="Full name" required></label>
+          <label id="labelEmail">Email<input type="email" name="email" placeholder="you@example.com" required></label>
+          <label id="labelCountry">Country<input type="text" name="country" placeholder="Country you are in" required></label>
+          <label id="labelDate">Preferred date & time<input type="datetime-local" name="datetime" required></label>
+          <label id="labelNote">Anything you want to see?<input type="text" name="note" placeholder="e.g. Maasai village, market, coffee farm"></label>
+          <button type="submit" class="submit" id="submitBtn">Reserve — We'll email Zoom link</button>
+        </form>
+      </aside>
+    </div>
+
+    <footer>
+      Live Safari — Experience Africa live • $15/hr • All sessions interactive & real
+    </footer>
+  </div>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide'); let idx=0;
+function showNext(){ slides.forEach((s,i)=>s.style.opacity=(i===idx?1:0)); idx=(idx+1)%slides.length; }
+showNext(); setInterval(showNext,4500);
+
+document.getElementById('openForm').addEventListener('click',()=>document.querySelector('input[name="datetime"]').focus());
+
+// Form submit to Formspree
+document.getElementById('booking').addEventListener('submit', function(e){
+  e.preventDefault();
+  const form = e.target;
+  fetch(form.action, {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}})
+  .then(r=>{if(r.ok){alert('Thanks! We received your request. We will email a Zoom link.'); form.reset();} else{alert('Oops! There was a problem.')}})
+  .catch(()=>alert('Oops! There was a problem.'));
+});
+
+// Language toggle
+const texts = {
+  jp:{
+    heroTitle:'マサイのガイドと一対一でズームを通してアフリカを体験！',
+    heroLead:'ライブでインタラクティブな冒険を体験！地元の人々や子供たちと話しながら、活気ある市場やコーヒー農園を歩き、アフリカの温かい文化に触れましょう。質問してリアルタイムで交流してください。家にいながらアフリカとつながるこのユニークな機会をお見逃しなく！',
+    formTitle:'ライブサファリを予約',
+    formDesc:'希望の日付と時間を選択してください。Zoomリンクを送ります。',
+    labelName:'お名前',
+    labelEmail:'メール',
+    labelCountry:'国',
+    labelDate:'希望日と時間',
+    labelNote:'見たいものは何ですか？',
+    submitBtn:'予約 — Zoomリンクを送ります'
+  },
+  en:{
+    heroTitle:'Join a Maasai-Dressed Guide and Explore Africa one on one Live through Zoom!',
+    heroLead:'Experience the thrill of a live, interactive adventure! Talk to locals, children, and community members as you walk through vibrant markets and visit coffee farms. Immerse yourself in the warmth of African culture, ask questions, and engage in real-time interactions. Don’t miss this unique opportunity to connect with Africa from the comfort of your home. Join us and be part of a community of explorers—your adventure awaits!',
+    formTitle:'Book your Live Safari',
+    formDesc:"Pick your preferred date and time (your local time). We'll confirm and send a Zoom link.",
+    labelName:'Your name',
+    labelEmail:'Email',
+    labelCountry:'Country',
+    labelDate:'Preferred date & time',
+    labelNote:'Anything you want to see?',
+    submitBtn:"Reserve — We'll email Zoom link"
+  }
+}
+
+function setLanguage(lang){
+  const t = texts[lang];
+  document.querySelector('#heroText h1').innerText=t.heroTitle;
+  document.querySelector('#heroText p').innerText=t.heroLead;
+  document.getElementById('formTitle').innerText=t.formTitle;
+  document.getElementById('formDesc').innerText=t.formDesc;
+  document.getElementById('labelName').childNodes[0].nodeValue=t.labelName;
+  document.getElementById('labelEmail').childNodes[0].nodeValue=t.labelEmail;
+  document.getElementById('labelCountry').childNodes[0].nodeValue=t.labelCountry;
+  document.getElementById('labelDate').childNodes[0].nodeValue=t.labelDate;
+  document.getElementById('labelNote').childNodes[0].nodeValue=t.labelNote;
+  document.getElementById('submitBtn').innerText=t.submitBtn;
+}
+</script>
+
+</body>
+</html>
